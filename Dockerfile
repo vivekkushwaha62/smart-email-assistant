@@ -2,9 +2,8 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy module folder
-COPY "email-writer-sb (1)/pom.xml" /app/
-COPY "email-writer-sb (1)/src" /app/src
+COPY email-writer-sb/pom.xml /app/
+COPY email-writer-sb/src /app/src
 
 RUN mvn clean package -DskipTests
 
