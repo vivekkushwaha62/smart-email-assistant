@@ -2,10 +2,11 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Correct nested paths
+# COPY the actual Maven module (inner folder)
 COPY email-writer-sb/email-writer-sb/pom.xml /app/
 COPY email-writer-sb/email-writer-sb/src /app/src
 
+# Build the JAR
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the JAR
