@@ -2,8 +2,9 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-COPY email-writer-sb/pom.xml /app/
-COPY email-writer-sb/src /app/src
+# Correct nested paths
+COPY email-writer-sb/email-writer-sb/pom.xml /app/
+COPY email-writer-sb/email-writer-sb/src /app/src
 
 RUN mvn clean package -DskipTests
 
