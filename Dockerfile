@@ -2,11 +2,13 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-COPY pom.xml .
-COPY src src
+# Copy module folder
+COPY "email-writer-sb (1)/pom.xml" /app/
+COPY "email-writer-sb (1)/src" /app/src
+
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the jar
+# Stage 2: Run the JAR
 FROM eclipse-temurin:17-jdk
 WORKDIR /app
 
